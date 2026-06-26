@@ -278,7 +278,7 @@
     }
     container.innerHTML = filtered
       .map(function (c) {
-        const statusClass = c.status === "active" ? "" : " inactive";
+        const statusClass = c.status === "closed" ? " inactive" : "";
         const locked = !c.playable ? " case-card-locked" : "";
         return (
           '<button type="button" class="case-card' +
@@ -327,12 +327,12 @@
   }
 
   function updateCaseTabCounts() {
-    ["active", "closed", "archived"].forEach(function (status) {
+    ["active", "open", "closed"].forEach(function (status) {
       const n = casesList.filter(function (c) {
         return c.status === status;
       }).length;
       const el = document.getElementById("count-" + status);
-      if (el) el.textContent = "(" + n + ")";
+      if (el) el.textContent = String(n);
     });
   }
 
@@ -370,8 +370,6 @@
     };
 
     document.getElementById("btn-resources-case").onclick = openResourcesCatalogue;
-
-    document.getElementById("btn-global-more").onclick = openResourcesCatalogue;
 
     document.querySelectorAll(".case-tab").forEach(function (tab) {
       tab.onclick = function () {

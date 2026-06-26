@@ -15,7 +15,7 @@
       "number": "02",
       "title": "THE REDHILL BURGLARY",
       "category": "Burglary / Theft",
-      "status": "active",
+      "status": "open",
       "playable": false,
       "opened": "08/04/23",
       "updated": "12/05/23"
@@ -25,7 +25,7 @@
       "number": "03",
       "title": "THE LAKESHORE HOMICIDE",
       "category": "Homicide / Assault",
-      "status": "active",
+      "status": "open",
       "playable": false,
       "opened": "02/04/23",
       "updated": "10/05/23"
@@ -55,7 +55,7 @@
       "number": "06",
       "title": "THE HARBORVIEW ARSON",
       "category": "Arson / Criminal Damage",
-      "status": "archived",
+      "status": "closed",
       "playable": false,
       "opened": "11/03/23",
       "updated": "27/04/23"

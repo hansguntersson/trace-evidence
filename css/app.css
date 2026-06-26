@@ -13,8 +13,8 @@
   --unread: #d97706;
   --font: "IBM Plex Mono", "Consolas", monospace;
   --font-ui: "DM Sans", system-ui, sans-serif;
-  --nav-h: 3.5rem;
-  --global-nav-h: 4rem;
+  --nav-h: 3.75rem;
+  --case-tabs-h: 4.25rem;
   --header-h: 3rem;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --radius: 10px;
@@ -224,55 +224,73 @@ input {
 
 .cases-header {
   flex-shrink: 0;
-  padding: 0.85rem 1rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 1.1rem 1.25rem 0.85rem;
 }
 
 .cases-header h1 {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
+.cases-scroll {
+  padding: 0.25rem 1.25rem 1rem;
+  padding-bottom: calc(var(--case-tabs-h) + var(--safe-bottom) + 0.5rem);
+}
+
 .case-tabs {
-  display: flex;
-  gap: 0;
-  padding: 0 1rem;
-  border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding-bottom: var(--safe-bottom);
+  min-height: var(--case-tabs-h);
+  box-shadow: 0 -2px 12px rgba(26, 26, 26, 0.06);
 }
 
 .case-tab {
   background: none;
   border: none;
-  border-bottom: 2px solid transparent;
-  padding: 0.65rem 0.85rem;
-  margin-bottom: -1px;
-  font-size: 0.8rem;
+  border-top: 3px solid transparent;
+  margin-top: -1px;
+  padding: 0.75rem 0.5rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--muted);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  line-height: 1.2;
 }
 
 .case-tab.active {
   color: var(--accent);
-  border-bottom-color: var(--accent);
+  border-top-color: var(--accent);
+  background: var(--surface2);
 }
 
-.cases-scroll {
-  padding: 1rem;
-  padding-bottom: 0.5rem;
+.case-tab-count {
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.case-tab.active .case-tab-count {
+  color: var(--accent);
 }
 
 .case-card {
   display: flex;
   background: var(--surface);
-  border-radius: var(--radius);
+  border-radius: 12px;
   box-shadow: var(--shadow);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   overflow: hidden;
   cursor: pointer;
   border: 1px solid var(--border);
@@ -286,17 +304,18 @@ input {
 .case-card:disabled,
 .case-card.case-card-locked {
   cursor: default;
-  opacity: 0.72;
+  opacity: 0.65;
 }
 
 .case-card-folder {
-  width: 3.25rem;
+  width: 4.25rem;
   flex-shrink: 0;
   background: linear-gradient(135deg, #d4b896 0%, var(--folder) 45%, var(--folder-dark) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 0.65rem;
+  justify-content: flex-start;
+  padding-top: 1rem;
   position: relative;
 }
 
@@ -304,27 +323,29 @@ input {
   content: "";
   position: absolute;
   top: 0;
-  left: 0.35rem;
-  right: 0.35rem;
-  height: 8px;
+  left: 0.45rem;
+  right: 0.45rem;
+  height: 10px;
   background: var(--folder);
-  border-radius: 2px 2px 0 0;
-  transform: translateY(-4px);
+  border-radius: 3px 3px 0 0;
+  transform: translateY(-5px);
 }
 
 .case-card-num {
   font-family: var(--font);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .case-card-body {
   flex: 1;
-  padding: 0.75rem 0.65rem 0.75rem 0.85rem;
+  padding: 1rem 1rem 1rem 1.1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
+  min-height: 6.5rem;
 }
 
 .case-card-main {
@@ -333,23 +354,24 @@ input {
 }
 
 .case-card-title {
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.35rem;
   font-family: var(--font);
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 600;
   letter-spacing: 0.02em;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .case-card-status {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   font-family: var(--font);
-  font-size: 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--accent);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
 }
 
 .case-card-status.inactive {
@@ -357,83 +379,40 @@ input {
 }
 
 .case-card-status .dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: currentColor;
+  flex-shrink: 0;
 }
 
 .case-card-category {
   margin: 0;
   font-family: var(--font);
-  font-size: 0.7rem;
-  color: var(--muted);
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.75;
+  line-height: 1.4;
 }
 
 .case-card-dates {
-  margin: 0.35rem 0 0;
+  margin: 0.5rem 0 0;
   font-family: var(--font);
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .case-card-chevron {
   color: var(--muted);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.btn-new-case {
-  margin: 0.5rem 1rem 0.75rem;
-  padding: 0.85rem;
-  background: transparent;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
-  border-radius: var(--radius);
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.global-nav {
-  flex-shrink: 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-  padding-bottom: var(--safe-bottom);
-  min-height: var(--global-nav-h);
-}
-
-.global-nav-item {
-  background: none;
-  border: none;
-  color: var(--muted);
-  padding: 0.45rem 0.2rem;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.global-nav-item:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-
-.global-nav-item.active {
-  color: var(--accent);
-}
-
-.global-nav-item svg {
-  display: block;
+.cases-scroll .empty-tab {
+  font-size: 1rem;
+  padding: 2rem 0;
 }
 
 /* —— Case investigation header —— */

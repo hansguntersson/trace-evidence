@@ -1,0 +1,76 @@
+{
+  "resources": [
+    {
+      "id": "RE-010",
+      "name": "Internet Tracing",
+      "category": "Digital Forensics",
+      "description": "IP address tracing, internet history, email address tracing",
+      "compatibleTypes": ["DigitalEvidence", "Record", "Person"],
+      "timeCost": 2,
+      "budgetCost": 150
+    },
+    {
+      "id": "RE-020",
+      "name": "Locational tracking & analysis",
+      "category": "Digital Forensics",
+      "description": "Cell tower pings, GPS traces, movement analysis",
+      "compatibleTypes": ["DigitalEvidence", "Record", "Statement"],
+      "timeCost": 2,
+      "budgetCost": 120
+    },
+    {
+      "id": "RE-030",
+      "name": "Financial and fraud analysis",
+      "category": "Digital Forensics",
+      "description": "Card transactions, account tracing, payment patterns",
+      "compatibleTypes": ["DigitalEvidence", "Record", "Statement"],
+      "timeCost": 2,
+      "budgetCost": 180
+    },
+    {
+      "id": "RE-040",
+      "name": "Tyre Mark & Vehicle analysis",
+      "category": "Physical & Chemical Forensics",
+      "description": "Tyre tread comparison, vehicle paint and parts analysis",
+      "compatibleTypes": ["PhysicalEvidence", "Record"],
+      "timeCost": 3,
+      "budgetCost": 200
+    },
+    {
+      "id": "RE-041",
+      "name": "Explosion & Fire analysis",
+      "category": "Physical & Chemical Forensics",
+      "description": "Accelerant identification, burn pattern analysis",
+      "compatibleTypes": ["PhysicalEvidence", "Record", "Location"],
+      "timeCost": 3,
+      "budgetCost": 220
+    },
+    {
+      "id": "RE-047",
+      "name": "Criminal register",
+      "category": "Registers & Databanks",
+      "description": "Prior convictions, known associates, gang intelligence cross-reference",
+      "compatibleTypes": ["Person", "Statement", "Record"],
+      "timeCost": 1,
+      "budgetCost": 50
+    },
+    {
+      "id": "RE-048",
+      "name": "Vehicle Licencing databank",
+      "category": "Registers & Databanks",
+      "description": "Stolen vehicle reports, registration history",
+      "compatibleTypes": ["Record", "PhysicalEvidence", "DigitalEvidence"],
+      "timeCost": 1,
+      "budgetCost": 40
+    },
+    {
+      "id": "RE-049",
+      "name": "Video & Photo analysis",
+      "category": "Digital Forensics",
+      "description": "Enhancement, frame-by-frame review, identification support",
+      "compatibleTypes": ["DigitalEvidence"],
+      "timeCost": 2,
+      "budgetCost": 100
+    }
+  ]
+}

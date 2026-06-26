@@ -1,0 +1,461 @@
+{
+  "caseId": "case1",
+  "caseName": "Moped Theft",
+  "entities": [
+    {
+      "id": "EN-0001",
+      "type": "Person",
+      "subtype": "Victim",
+      "name": "Lucinda Wyatt",
+      "value": "Victim of street theft — phone and handbag taken.",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0002", "EN-0003", "EN-0004", "EN-0005", "EN-0006", "EN-0007", "EN-0008", "EN-0009", "EN-0010", "EN-0011"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0002",
+      "type": "PersonDetail",
+      "name": "Age",
+      "value": "26",
+      "visible": true,
+      "unread": false,
+      "links": ["EN-0001"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0003",
+      "type": "PersonDetail",
+      "name": "Profession",
+      "value": "Marketing Executive",
+      "visible": true,
+      "unread": false,
+      "links": ["EN-0001"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0004",
+      "type": "PersonDetail",
+      "name": "Passport Number",
+      "value": "0114 9875",
+      "visible": true,
+      "unread": false,
+      "links": ["EN-0001"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0005",
+      "type": "PersonDetail",
+      "name": "Fingerprints",
+      "value": "On record",
+      "visible": true,
+      "unread": false,
+      "links": ["EN-0001"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0006",
+      "type": "Statement",
+      "name": "Theft",
+      "value": "Phone and bag grabbed by youth on moped",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0001"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0007",
+      "type": "Statement",
+      "name": "Missing bag",
+      "value": "Missing red leather handbag",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0001"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0008",
+      "type": "Statement",
+      "name": "Missing phone",
+      "value": "Missing smartphone IMEI: 06654 847503",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0001", "EN-0057"],
+      "compatibleResources": ["RE-020", "RE-030"]
+    },
+    {
+      "id": "EN-0009",
+      "type": "Statement",
+      "name": "Suspect age",
+      "value": "Teenager, between 13 and 16 years old",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0001"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0010",
+      "type": "Statement",
+      "name": "Suspect clothing",
+      "value": "Black hoodie, puffer jacket, tracksuit bottoms, red trainers",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0001"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0011",
+      "type": "Statement",
+      "name": "Direction of travel",
+      "value": "Moped rode off eastwards after theft",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0001", "EN-0024", "EN-0054"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0017",
+      "type": "Person",
+      "subtype": "Witness",
+      "name": "Salih 'Sal' Yilmaz",
+      "value": "Delicatessen proprietor; witnessed the theft.",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0018", "EN-0019", "EN-0022", "EN-0023", "EN-0024", "EN-0028"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0018",
+      "type": "PersonDetail",
+      "name": "Age",
+      "value": "52",
+      "visible": true,
+      "unread": false,
+      "links": ["EN-0017"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0019",
+      "type": "PersonDetail",
+      "name": "Profession",
+      "value": "Delicatessen Proprietor",
+      "visible": true,
+      "unread": false,
+      "links": ["EN-0017"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0022",
+      "type": "Statement",
+      "name": "Moped theft",
+      "value": "Saw two youths on moped carry out theft",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0017", "EN-0056"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0023",
+      "type": "Statement",
+      "name": "Suspect identity",
+      "value": "Believes son Hasan knows one of the suspects",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0017", "EN-0028"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0024",
+      "type": "Statement",
+      "name": "Direction of travel",
+      "value": "Saw moped ride off eastwards after robbery",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0017", "EN-0011"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0028",
+      "type": "Person",
+      "subtype": "PersonOfInterest",
+      "name": "Hasan Yilmaz",
+      "value": "Son of witness Sal Yilmaz; person of interest.",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0029", "EN-0030", "NR-0001"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0029",
+      "type": "PersonDetail",
+      "name": "Passport Number",
+      "value": "0055 8864",
+      "visible": true,
+      "unread": false,
+      "links": ["EN-0028"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0030",
+      "type": "Statement",
+      "name": "Suspect boast",
+      "value": "Claims someone boasted of conducting the robbery",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0028", "NR-0001", "EN-0065"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "NR-0001",
+      "type": "NameReference",
+      "name": "X",
+      "value": "Name mentioned in Hasan Yilmaz statement — identity unknown",
+      "visible": true,
+      "unread": true,
+      "resolvedTo": null,
+      "links": ["EN-0030", "EN-0028"],
+      "compatibleResources": []
+    },
+    {
+      "id": "EN-0050",
+      "type": "PhysicalEvidence",
+      "name": "Tyre marks",
+      "value": "Tyre marks on pavement outside barbers, direction of approach identifiable",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0051", "EN-0060"],
+      "compatibleResources": ["RE-040"]
+    },
+    {
+      "id": "EN-0051",
+      "type": "PhysicalEvidence",
+      "name": "Lamppost scuff marks",
+      "value": "Scuff marks and paint transfer on lamppost 40m east of theft location",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0050", "EN-0053"],
+      "compatibleResources": ["RE-040"]
+    },
+    {
+      "id": "EN-0052",
+      "type": "PhysicalEvidence",
+      "name": "Van collision damage",
+      "value": "Glass fragments and paint residue at traffic light junction, 80m east",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0053", "EN-0055", "EN-0067"],
+      "compatibleResources": ["RE-040", "RE-041"]
+    },
+    {
+      "id": "EN-0053",
+      "type": "PhysicalEvidence",
+      "name": "Moped paint fragments",
+      "value": "Paint fragments recovered from lamppost and van collision point",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0051", "EN-0052", "EN-0061"],
+      "compatibleResources": ["RE-040"]
+    },
+    {
+      "id": "EN-0054",
+      "type": "DigitalEvidence",
+      "name": "CCTV timestamp - barbers",
+      "value": "CCTV from barber shop exterior: moped mounts kerb at 14:37:22",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0011", "EN-0055", "EN-0061"],
+      "compatibleResources": ["RE-049", "RE-010"]
+    },
+    {
+      "id": "EN-0055",
+      "type": "DigitalEvidence",
+      "name": "CCTV timestamp - junction",
+      "value": "Traffic camera at junction: moped collision with van at 14:39:05",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0054", "EN-0056", "EN-0063", "EN-0064"],
+      "compatibleResources": ["RE-049"]
+    },
+    {
+      "id": "EN-0056",
+      "type": "DigitalEvidence",
+      "name": "CCTV direction - east",
+      "value": "CCTV confirms eastward direction of travel post-theft, two riders visible",
+      "visible": true,
+      "unread": true,
+      "links": ["EN-0022", "EN-0010"],
+      "compatibleResources": ["RE-049"]
+    },
+    {
+      "id": "EN-0057",
+      "type": "Record",
+      "name": "Phone IMEI record",
+      "value": "IMEI 06654 847503 registered to Lucinda Wyatt",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0008", "EN-0058"],
+      "compatibleResources": ["RE-020"]
+    },
+    {
+      "id": "EN-0058",
+      "type": "Record",
+      "name": "Phone network activity",
+      "value": "IMEI last pinged tower ref. E4-Hackney at 14:52. Active SIM swap at 16:20.",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0057", "EN-0059"],
+      "compatibleResources": ["RE-020", "RE-010"]
+    },
+    {
+      "id": "EN-0059",
+      "type": "Location",
+      "name": "Phone shop - Dalston",
+      "value": "Unlicensed phone repair and resale shop, Kingsland Road",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0058"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0060",
+      "type": "Record",
+      "name": "Tyre make identification",
+      "value": "Tyre marks consistent with Pirelli SL26 - fitted to Honda SH125 or Yamaha NMAX",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0050", "EN-0061"],
+      "compatibleResources": ["RE-048"]
+    },
+    {
+      "id": "EN-0061",
+      "type": "Record",
+      "name": "Paint analysis result",
+      "value": "Paint fragments: Honda factory red, model year 2019-2021. Matches Honda PCX150.",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0053", "EN-0062", "EN-0066"],
+      "compatibleResources": ["RE-040"]
+    },
+    {
+      "id": "EN-0062",
+      "type": "Record",
+      "name": "Stolen vehicle report - Honda PCX150",
+      "value": "Honda PCX150 reg. LJ21 XRT reported stolen from Stoke Newington, 3 days prior",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0061", "EN-0066", "EN-0067"],
+      "compatibleResources": ["RE-048"]
+    },
+    {
+      "id": "EN-0063",
+      "type": "Person",
+      "subtype": "Witness",
+      "name": "Marcus Eze",
+      "value": "Driver of van struck by moped at junction",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0064", "EN-0055"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0064",
+      "type": "Statement",
+      "name": "Van collision",
+      "value": "Moped ran red light at speed, two riders, pillion shouted gang slang 'YBK' before riding off",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0063", "EN-0065"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0065",
+      "type": "Record",
+      "name": "Gang tag - YBK",
+      "value": "Tag 'YBK' (Youngers Block Krew) found on graffiti, associated with N16/E8 postcode",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0030", "EN-0069", "EN-0070"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0066",
+      "type": "Location",
+      "name": "Garage - Amhurst Road",
+      "value": "MOT and repair garage. Operator: Derek Finch. Prior conviction: handling stolen goods 2019.",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0061", "EN-0062"],
+      "compatibleResources": ["RE-047", "RE-041"]
+    },
+    {
+      "id": "EN-0067",
+      "type": "PhysicalEvidence",
+      "name": "Arson evidence - moped fire",
+      "value": "Burned moped shell found off Pembury Road. Accelerant used: lighter fluid.",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0052", "EN-0068"],
+      "compatibleResources": ["RE-041", "RE-030"]
+    },
+    {
+      "id": "EN-0068",
+      "type": "Record",
+      "name": "Credit card transaction",
+      "value": "Card ending 4471 used at corner shop for lighter fluid purchase, 14:28 - 9 mins before theft",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0067", "EN-0069"],
+      "compatibleResources": ["RE-030"]
+    },
+    {
+      "id": "EN-0069",
+      "type": "Record",
+      "name": "Card 4471 identity",
+      "value": "Card 4471 registered to Jordan Ashe, DOB 14/03/2008, address: Pembury Estate E8",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0068", "EN-0065", "EN-0070"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "EN-0070",
+      "type": "Person",
+      "subtype": "Suspect",
+      "name": "Jordan Ashe",
+      "value": "Male, 17. Pembury Estate. Known associate of YBK. Prior stop and search x3.",
+      "visible": false,
+      "unread": true,
+      "links": ["EN-0065", "EN-0069", "NR-0001"],
+      "compatibleResources": ["RE-047"]
+    }
+  ],
+  "combinations": [
+    { "id": "CO-0001", "input1": "EN-0011", "input2": "EN-0024", "result": "EN-0054", "resultNote": "Corroborated direction unlocks CCTV request" },
+    { "id": "CO-0002", "input1": "EN-0054", "input2": "EN-0055", "result": "EN-0056", "resultNote": "Timeline confirmed" },
+    { "id": "CO-0003", "input1": "EN-0056", "input2": "EN-0022", "result": "EN-0063", "resultNote": "Van driver witness" },
+    { "id": "CO-0004", "input1": "EN-0063", "input2": "EN-0055", "result": "EN-0064", "resultNote": "Van driver statement" },
+    { "id": "CO-0005", "input1": "EN-0064", "input2": "EN-0065", "result": "EN-0065", "resultNote": "YBK gang intelligence" },
+    { "id": "CO-0006", "input1": "EN-0050", "input2": "EN-0051", "result": "EN-0060", "resultNote": "Tyre forensics" },
+    { "id": "CO-0007", "input1": "EN-0053", "input2": "EN-0060", "result": "EN-0061", "resultNote": "Paint analysis" },
+    { "id": "CO-0008", "input1": "EN-0061", "input2": "EN-0054", "result": "EN-0062", "resultNote": "Stolen vehicle report" },
+    { "id": "CO-0009", "input1": "EN-0008", "input2": "EN-0057", "result": "EN-0058", "resultNote": "Phone network activity" },
+    { "id": "CO-0010", "input1": "EN-0058", "input2": "EN-0065", "result": "EN-0059", "resultNote": "Phone shop location" },
+    { "id": "CO-0011", "input1": "EN-0067", "input2": "EN-0068", "result": "EN-0068", "resultNote": "Credit card transaction" },
+    { "id": "CO-0012", "input1": "EN-0068", "input2": "EN-0069", "result": "EN-0069", "resultNote": "Card identity" },
+    { "id": "CO-0013", "input1": "EN-0069", "input2": "EN-0065", "result": "EN-0070", "resultNote": "Financial trail to suspect" },
+    { "id": "CO-0014", "input1": "EN-0030", "input2": "EN-0065", "result": "EN-0070", "resultNote": "Social trail to suspect" },
+    { "id": "CO-0015", "input1": "EN-0062", "input2": "EN-0066", "result": "EN-0066", "resultNote": "Garage flagged" },
+    { "id": "CO-0016", "input1": "EN-0061", "input2": "EN-0066", "result": "EN-0066", "resultNote": "Garage spray paint match" },
+    { "id": "CO-0017", "input1": "EN-0070", "input2": "EN-0009", "result": null, "resultNote": "Age description inconclusive" },
+    { "id": "CO-0018", "input1": "EN-0010", "input2": "EN-0056", "result": null, "resultNote": "CCTV clothing inconclusive" },
+    { "id": "CO-0019", "input1": "EN-0023", "input2": "EN-0028", "result": "EN-0030", "resultNote": "Hasan statement unlocked" },
+    { "id": "CO-0020", "input1": "EN-0058", "input2": "EN-0059", "result": "EN-0059", "resultNote": "SIM swap timing" },
+    { "id": "CO-0021", "input1": "EN-0052", "input2": "EN-0053", "result": "EN-0067", "resultNote": "Arson evidence from collision debris trail" }
+  ],
+  "resourceActions": [
+    { "id": "RA-0001", "resourceId": "RE-020", "entityId": "EN-0008", "result": "EN-0057", "resultNote": "IMEI lookup from missing phone statement" },
+    { "id": "RA-0002", "resourceId": "RE-047", "entityId": "EN-0064", "result": "EN-0065", "resultNote": "Gang intelligence cross-reference from van driver statement" },
+    { "id": "RA-0003", "resourceId": "RE-041", "entityId": "EN-0052", "result": "EN-0067", "resultNote": "Fire investigator traces burned moped" },
+    { "id": "RA-0004", "resourceId": "RE-030", "entityId": "EN-0067", "result": "EN-0068", "resultNote": "Transaction records near fire site" }
+  ]
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trace Evidence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Landing -->
+    <div id="screen-landing" class="screen screen-landing active">
+      <div class="folder-tab" aria-hidden="true">
+        <span>CASE FILE | 23-1748</span>
+      </div>
+      <div class="landing-body">
+        <div class="landing-logo-frame" aria-hidden="true">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <svg class="landing-logo" viewBox="0 0 120 80" width="120" height="80" aria-hidden="true">
+            <path d="M8 12h44v56H8z" fill="#a68966"/>
+            <path d="M52 12h60v56H52z" fill="#1a1a1a" opacity="0.08"/>
+            <ellipse cx="82" cy="40" rx="22" ry="26" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+            <path d="M68 28c4-8 12-12 20-10 8 2 14 10 14 20 0 14-12 24-26 22" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+            <path d="M74 34c2-4 8-6 12-4 6 2 8 8 6 14-2 8-10 12-16 8" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <h1 class="landing-title">TRACE EVIDENCE</h1>
+        <div class="landing-divider" aria-hidden="true"><span></span><i></i><span></span></div>
+        <p class="landing-subtitle">A MODERN DETECTIVE GAME</p>
+      </div>
+      <div class="landing-footer">
+        <button type="button" class="btn-landing" id="btn-start-investigating">
+          START INVESTIGATING <span aria-hidden="true">→</span>
+        </button>
+        <div class="landing-lines" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <svg class="landing-barcode" viewBox="0 0 48 16" width="48" height="16"><rect x="0" y="0" width="3" height="16" fill="#d97706"/><rect x="5" y="0" width="2" height="16" fill="#d97706"/><rect x="9" y="0" width="4" height="16" fill="#d97706"/><rect x="16" y="0" width="2" height="16" fill="#d97706"/><rect x="20" y="0" width="3" height="16" fill="#d97706"/><rect x="26" y="0" width="2" height="16" fill="#d97706"/><rect x="30" y="0" width="5" height="16" fill="#d97706"/><rect x="38" y="0" width="2" height="16" fill="#d97706"/><rect x="42" y="0" width="4" height="16" fill="#d97706"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cases list -->
+    <div id="screen-cases" class="screen screen-cases">
+      <header class="cases-header">
+        <h1>Cases</h1>
+        <div class="header-actions">
+          <button type="button" class="btn-icon" aria-label="Search" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+          </button>
+          <button type="button" class="btn-icon" aria-label="Filter" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          </button>
+        </div>
+      </header>
+      <div class="case-tabs" role="tablist">
+        <button type="button" class="case-tab active" data-case-filter="active">Active <span id="count-active">(0)</span></button>
+        <button type="button" class="case-tab" data-case-filter="closed">Closed <span id="count-closed">(0)</span></button>
+        <button type="button" class="case-tab" data-case-filter="archived">Archived <span id="count-archived">(0)</span></button>
+      </div>
+      <div class="dossier-scroll cases-scroll" id="cases-list"></div>
+      <button type="button" class="btn-new-case" disabled>+ NEW CASE</button>
+      <nav class="global-nav" aria-label="Main">
+        <button type="button" class="global-nav-item active" data-global-nav="cases">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18v14H3z"/><path d="M3 7l4-4h10l4 4"/></svg>
+          Cases
+        </button>
+        <button type="button" class="global-nav-item" data-global-nav="evidence" disabled>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+          Evidence
+        </button>
+        <button type="button" class="global-nav-item" data-global-nav="people" disabled>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-4 3-7 7-7s7 3 7 7"/></svg>
+          People
+        </button>
+        <button type="button" class="global-nav-item" data-global-nav="map" disabled>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 2 5 5 5 9c0 5 7 11 7 11s7-6 7-11c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2"/></svg>
+          Map
+        </button>
+        <button type="button" class="global-nav-item" data-global-nav="more" id="btn-global-more">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="18" cy="12" r="1.5" fill="currentColor"/></svg>
+          More
+        </button>
+      </nav>
+    </div>
+
+    <!-- Case investigation -->
+    <div id="screen-case" class="screen screen-case">
+      <header class="app-header">
+        <button type="button" class="btn-back" id="btn-back-cases" aria-label="Back to cases">←</button>
+        <div class="header-titles">
+          <h1>Case file</h1>
+          <div class="case-title" id="case-title">—</div>
+        </div>
+        <button type="button" class="btn-text" id="btn-resources-case">Resources</button>
+      </header>
+      <div class="charges-bar">Charges — unavailable</div>
+
+      <div class="dossier-scroll" id="dossier-scroll">
+        <div id="tab-pinned" class="tab-panel active" data-tab="pinned"></div>
+        <div id="tab-evidence" class="tab-panel" data-tab="evidence"></div>
+        <div id="tab-people" class="tab-panel" data-tab="people"></div>
+        <div id="tab-locations" class="tab-panel" data-tab="locations"></div>
+      </div>
+
+      <nav class="bottom-nav" aria-label="Dossier">
+        <button type="button" class="nav-tab active" data-nav="pinned">
+          Pinned
+          <span class="nav-badge" data-badge="pinned"></span>
+        </button>
+        <button type="button" class="nav-tab" data-nav="evidence">
+          Evidence
+          <span class="nav-badge" data-badge="evidence"></span>
+        </button>
+        <button type="button" class="nav-tab" data-nav="people">
+          People
+          <span class="nav-badge" data-badge="people"></span>
+        </button>
+        <button type="button" class="nav-tab" data-nav="locations">
+          Locations
+          <span class="nav-badge" data-badge="locations"></span>
+        </button>
+      </nav>
+
+      <button type="button" class="fab-combine" id="btn-combine-fab" aria-label="Combine">COMB</button>
+    </div>
+
+    <!-- Overlays (unchanged structure) -->
+    <div id="overlay-combine" class="overlay" aria-hidden="true">
+      <div class="overlay-panel">
+        <div class="overlay-header">
+          <h2>Combine</h2>
+          <button type="button" class="btn-text" id="btn-combine-close">Close</button>
+        </div>
+        <div class="overlay-body">
+          <div class="combine-slots">
+            <div class="combine-slot" id="slot-a" data-slot="a">
+              <div class="slot-label">Slot A</div>
+              <span class="slot-content">Tap entity to load</span>
+            </div>
+            <div class="combine-slot" id="slot-b" data-slot="b">
+              <div class="slot-label">Slot B</div>
+              <span class="slot-content">Tap entity to load</span>
+            </div>
+          </div>
+          <div class="combine-result" id="combine-result">—</div>
+          <div class="combine-actions">
+            <button type="button" class="btn-text primary" id="btn-combine-run" disabled>Combine</button>
+            <button type="button" class="btn-text" id="btn-combine-clear">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay-resources" class="overlay" aria-hidden="true">
+      <div class="overlay-panel">
+        <div class="overlay-header">
+          <h2>Resources</h2>
+          <button type="button" class="btn-text" id="btn-resources-close">Close</button>
+        </div>
+        <div class="overlay-body">
+          <p class="resource-hint">Resources are applied from entity cards. This catalogue is reference only.</p>
+          <div id="resources-catalogue"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay-apply-resource" class="overlay" aria-hidden="true">
+      <div class="overlay-panel">
+        <div class="overlay-header">
+          <h2>Apply resource</h2>
+          <button type="button" class="btn-text" id="btn-apply-resource-close">Close</button>
+        </div>
+        <div class="overlay-body">
+          <p class="resource-hint" id="apply-resource-context"></p>
+          <div id="apply-resource-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay-detail" class="overlay detail-overlay" aria-hidden="true">
+      <div class="overlay-panel">
+        <div class="overlay-header">
+          <h2 id="detail-title">Entity</h2>
+          <button type="button" class="btn-text" id="btn-detail-close">Close</button>
+        </div>
+        <div class="overlay-body" id="detail-body"></div>
+      </div>
+    </div>
+
+    <div id="overlay-attribute" class="overlay" aria-hidden="true">
+      <div class="overlay-panel">
+        <div class="overlay-header">
+          <h2>Attribute name</h2>
+          <button type="button" class="btn-text" id="btn-attribute-close">Close</button>
+        </div>
+        <div class="overlay-body">
+          <p class="resource-hint" id="attribute-context"></p>
+          <div class="person-picker" id="attribute-picker"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/case1-data.js"></script>
+  <script src="js/resources-data.js"></script>
+  <script src="js/cases-data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -13,9 +13,7 @@
   <div id="app">
     <!-- Landing -->
     <div id="screen-landing" class="screen screen-landing active">
-      <div class="folder-tab" aria-hidden="true">
-        <span>CASE FILE | 23-1748</span>
-      </div>
+      <p class="landing-version" id="landing-version" aria-label="App version"></p>
       <div class="landing-body">
         <div class="landing-logo-frame" aria-hidden="true">
           <span class="corner tl"></span><span class="corner tr"></span>
@@ -34,12 +32,8 @@
       </div>
       <div class="landing-footer">
         <button type="button" class="btn-landing" id="btn-start-investigating">
-          START INVESTIGATING <span aria-hidden="true">→</span>
+          start investigating
         </button>
-        <div class="landing-lines" aria-hidden="true">
-          <span></span><span></span><span></span>
-          <svg class="landing-barcode" viewBox="0 0 48 16" width="48" height="16"><rect x="0" y="0" width="3" height="16" fill="#d97706"/><rect x="5" y="0" width="2" height="16" fill="#d97706"/><rect x="9" y="0" width="4" height="16" fill="#d97706"/><rect x="16" y="0" width="2" height="16" fill="#d97706"/><rect x="20" y="0" width="3" height="16" fill="#d97706"/><rect x="26" y="0" width="2" height="16" fill="#d97706"/><rect x="30" y="0" width="5" height="16" fill="#d97706"/><rect x="38" y="0" width="2" height="16" fill="#d97706"/><rect x="42" y="0" width="4" height="16" fill="#d97706"/></svg>
-        </div>
       </div>
     </div>
 
@@ -52,15 +46,15 @@
       <nav class="case-tabs" role="tablist" aria-label="Case status">
         <button type="button" class="case-tab active" data-case-filter="active">
           Active
-          <span class="case-tab-count" id="count-active">0</span>
+          <span class="case-tab-count" id="count-active">0 cases</span>
         </button>
         <button type="button" class="case-tab" data-case-filter="open">
           Open
-          <span class="case-tab-count" id="count-open">0</span>
+          <span class="case-tab-count" id="count-open">0 cases</span>
         </button>
         <button type="button" class="case-tab" data-case-filter="closed">
           Closed
-          <span class="case-tab-count" id="count-closed">0</span>
+          <span class="case-tab-count" id="count-closed">0 cases</span>
         </button>
       </nav>
     </div>
@@ -70,36 +64,43 @@
       <header class="app-header">
         <button type="button" class="btn-back" id="btn-back-cases" aria-label="Back to cases">←</button>
         <div class="header-titles">
-          <h1>Case file</h1>
-          <div class="case-title" id="case-title">—</div>
+          <div class="case-heading">
+            <span class="case-heading-label">CASE</span>
+            <span class="case-ref" id="case-ref">—</span>
+            <span class="case-heading-sep" aria-hidden="true">:</span>
+            <span class="case-title" id="case-title">—</span>
+          </div>
         </div>
-        <button type="button" class="btn-text" id="btn-resources-case">Resources</button>
+        <button type="button" class="btn-text btn-folder" id="btn-resources-case">Resources</button>
       </header>
-      <div class="charges-bar">Charges — unavailable</div>
 
       <div class="dossier-scroll" id="dossier-scroll">
         <div id="tab-pinned" class="tab-panel active" data-tab="pinned"></div>
+        <div id="tab-locations" class="tab-panel" data-tab="locations"></div>
         <div id="tab-evidence" class="tab-panel" data-tab="evidence"></div>
         <div id="tab-people" class="tab-panel" data-tab="people"></div>
-        <div id="tab-locations" class="tab-panel" data-tab="locations"></div>
       </div>
 
       <nav class="bottom-nav" aria-label="Dossier">
         <button type="button" class="nav-tab active" data-nav="pinned">
+          <img class="pin-icon nav-pin-icon" src="images/pin.png" alt="" width="22" height="22">
           Pinned
           <span class="nav-badge" data-badge="pinned"></span>
         </button>
+        <button type="button" class="nav-tab" data-nav="locations">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+          Locations
+          <span class="nav-badge" data-badge="locations"></span>
+        </button>
         <button type="button" class="nav-tab" data-nav="evidence">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
           Evidence
           <span class="nav-badge" data-badge="evidence"></span>
         </button>
         <button type="button" class="nav-tab" data-nav="people">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
           People
           <span class="nav-badge" data-badge="people"></span>
-        </button>
-        <button type="button" class="nav-tab" data-nav="locations">
-          Locations
-          <span class="nav-badge" data-badge="locations"></span>
         </button>
       </nav>
 
@@ -183,6 +184,7 @@
     </div>
   </div>
 
+  <script src="js/app-data.js"></script>
   <script src="js/case1-data.js"></script>
   <script src="js/resources-data.js"></script>
   <script src="js/cases-data.js"></script>

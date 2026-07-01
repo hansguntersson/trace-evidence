@@ -16,11 +16,12 @@
     });
     return {
       caseId: caseData.caseId,
+      caseRef: caseData.caseRef,
       caseName: caseData.caseName,
       entities: entities,
       combinations: caseData.combinations || [],
       resourceActions: caseData.resourceActions || [],
-      pins: [],
+      pins: (caseData.initialPins || []).slice(),
       combineSlots: { a: null, b: null },
       slotTarget: "a",
       viewed: {},
@@ -51,6 +52,23 @@
     }
     if (entity.type === "PersonDetail") return "people";
     return tabForEntity(entity);
+  }
+
+  function tabForEntity(entity) {
+    if (!entity) return "evidence";
+    switch (entity.type) {
+      case "Person":
+        return "people";
+      case "Location":
+        return "locations";
+      case "PhysicalEvidence":
+      case "DigitalEvidence":
+      case "Record":
+      case "NameReference":
+        return "evidence";
+      default:
+        return "evidence";
+    }
   }
 
   function addBidirectionalLink(state, idA, idB) {

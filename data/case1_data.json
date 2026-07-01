@@ -1,6 +1,8 @@
 {
   "caseId": "case1",
-  "caseName": "Moped Theft",
+  "caseRef": "23-1748",
+  "caseName": "Moped theft",
+  "initialPins": ["DM-EVD-01", "DM-LOC-01", "DM-PPL-01"],
   "entities": [
     {
       "id": "EN-0001",
@@ -311,10 +313,91 @@
       "type": "Location",
       "name": "Phone shop - Dalston",
       "value": "Unlicensed phone repair and resale shop, Kingsland Road",
-      "visible": false,
+      "visible": true,
       "unread": true,
       "links": ["EN-0058"],
       "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "DM-LOC-01",
+      "type": "Location",
+      "name": "Theft scene",
+      "value": "Corner of Riley Street and Kingsland Road — victim approached from north.",
+      "visible": true,
+      "unread": true,
+      "links": [],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "DM-LOC-02",
+      "type": "Location",
+      "name": "CCTV junction",
+      "value": "Amhurst Road / Downs Road — traffic camera coverage, eastbound lane.",
+      "visible": true,
+      "unread": false,
+      "links": ["DM-EVD-02"],
+      "compatibleResources": ["RE-049"]
+    },
+    {
+      "id": "DM-EVD-01",
+      "type": "PhysicalEvidence",
+      "name": "Helmet fragment",
+      "value": "Red composite fragment recovered 12m from kerb. Paint sample pending.",
+      "visible": true,
+      "unread": true,
+      "links": [],
+      "compatibleResources": ["RE-040"]
+    },
+    {
+      "id": "DM-EVD-02",
+      "type": "DigitalEvidence",
+      "name": "CCTV still — junction",
+      "value": "Still frame 14:38:41 showing moped registration plate partially obscured.",
+      "visible": true,
+      "unread": false,
+      "links": ["DM-LOC-02"],
+      "compatibleResources": ["RE-049"]
+    },
+    {
+      "id": "DM-EVD-03",
+      "type": "Record",
+      "name": "Moped enquiry log",
+      "value": "DVLA trace requested for plate partial LJ2—. Response due 48h.",
+      "visible": true,
+      "unread": true,
+      "links": [],
+      "compatibleResources": ["RE-048"]
+    },
+    {
+      "id": "DM-PPL-01",
+      "type": "Person",
+      "subtype": "Witness",
+      "name": "Sample witness",
+      "value": "Placeholder witness record for UI review.",
+      "visible": true,
+      "unread": true,
+      "links": ["DM-PPL-02", "DM-PPL-03"],
+      "compatibleResources": ["RE-047"]
+    },
+    {
+      "id": "DM-PPL-02",
+      "type": "PersonDetail",
+      "name": "Contact number",
+      "value": "07XXX XXX 412",
+      "visible": true,
+      "unread": false,
+      "links": ["DM-PPL-01"],
+      "compatibleResources": []
+    },
+    {
+      "id": "DM-PPL-03",
+      "type": "Statement",
+      "name": "Initial account",
+      "value": "Saw two males on a moped mount the pavement at speed.",
+      "visible": true,
+      "unread": true,
+      "links": ["DM-PPL-01"],
+      "compatibleResources": []
     },
     {
       "id": "EN-0060",
@@ -382,7 +465,7 @@
       "type": "Location",
       "name": "Garage - Amhurst Road",
       "value": "MOT and repair garage. Operator: Derek Finch. Prior conviction: handling stolen goods 2019.",
-      "visible": false,
+      "visible": true,
       "unread": true,
       "links": ["EN-0061", "EN-0062"],
       "compatibleResources": ["RE-047", "RE-041"]

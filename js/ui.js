@@ -39,11 +39,15 @@
     return html;
   }
 
+  function pinIconMarkup() {
+    return '<img class="pin-icon" src="images/pin.png" alt="" width="22" height="22">';
+  }
+
   function renderEntityCard(state, entity, options) {
     const opts = options || {};
+    const listView = opts.listView === true;
     const pinned = state.pins.indexOf(entity.id) >= 0;
     const unread = entity.unread ? " unread" : "";
-    const pinnedCls = pinned ? " pinned-card" : "";
     const nameRefCls =
       entity.type === "NameReference" && !entity.resolvedTo
         ? " name-ref-unresolved"
@@ -53,24 +57,26 @@
         ? ' style="opacity:0.35;pointer-events:none"'
         : "";
 
-    const action = Engine.primaryAction(state, entity);
+    const action = listView ? null : Engine.primaryAction(state, entity);
     let actionBtn = "";
-    if (action === "attribute") {
-      actionBtn =
-        '<button type="button" class="btn-text primary" data-action="attribute">Attribute</button>';
-    } else if (action === "inspect") {
-      actionBtn =
-        '<button type="button" class="btn-text primary" data-action="inspect">Inspect</button>';
-    } else if (action === "interview") {
-      actionBtn =
-        '<button type="button" class="btn-text primary" data-action="interview">Interview</button>';
-    } else if (action === "search") {
-      actionBtn =
-        '<button type="button" class="btn-text primary" data-action="search">Search</button>';
+    if (!listView) {
+      if (action === "attribute") {
+        actionBtn =
+          '<button type="button" class="btn-text primary" data-action="attribute">Attribute</button>';
+      } else if (action === "inspect") {
+        actionBtn =
+          '<button type="button" class="btn-text primary" data-action="inspect">Inspect</button>';
+      } else if (action === "interview") {
+        actionBtn =
+          '<button type="button" class="btn-text primary" data-action="interview">Interview</button>';
+      } else if (action === "search") {
+        actionBtn =
+          '<button type="button" class="btn-text primary" data-action="search">Search</button>';
+      }
     }
 
     const resources =
-      (entity.compatibleResources || []).length > 0
+      !listView && (entity.compatibleResources || []).length > 0
         ? '<button type="button" class="btn-text" data-action="apply-resource">Apply resource</button>'
         : "";
 
@@ -91,7 +97,6 @@
     return (
       '<article class="entity-card' +
       unread +
-      pinnedCls +
       nameRefCls +
       '" data-entity-id="' +
       entity.id +
@@ -102,8 +107,10 @@
       (pinned ? " active" : "") +
       '" data-pin="' +
       entity.id +
-      '" aria-label="Pin">' +
-      (pinned ? "PIN" : "pin") +
+      '" aria-label="' +
+      (pinned ? "Unpin" : "Pin") +
+      '">' +
+      pinIconMarkup() +
       "</button>" +
       '<div class="entity-meta">' +
       '<span class="entity-id">' +
@@ -120,7 +127,7 @@
       '<p class="entity-value">' +
       linkifyValue(state, entity.value) +
       "</p>" +
-      (entity.links && entity.links.length
+      (!listView && entity.links && entity.links.length
         ? '<p class="entity-value" style="font-size:0.7rem;color:var(--muted)">Links: ' +
           entity.links
             .filter(function (lid) {
@@ -140,13 +147,15 @@
             .join(", ") +
           "</p>"
         : "") +
-      '<div class="entity-actions">' +
-      actionBtn +
-      resources +
-      (opts.combineMode
-        ? '<button type="button" class="btn-text" data-action="load-slot">Add to combine</button>'
+      (actionBtn || resources || opts.combineMode
+        ? '<div class="entity-actions">' +
+          actionBtn +
+          resources +
+          (opts.combineMode
+            ? '<button type="button" class="btn-text" data-action="load-slot">Add to combine</button>'
+            : "") +
+          "</div>"
         : "") +
-      "</div>" +
       "</article>"
     );
   }
@@ -190,6 +199,7 @@
             personLock: personLock,
             canCombine: canCombine,
             combineMode: opts.combinePicker,
+            listView: !opts.combinePicker,
           });
         })
         .join("") +

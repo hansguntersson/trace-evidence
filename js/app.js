@@ -261,16 +261,68 @@
 
   function startCase(caseData) {
     state = Engine.cloneState(caseData);
+    const meta = casesList.find(function (c) {
+      return c.id === caseData.caseId;
+    });
+    document.getElementById("case-ref").textContent =
+      (meta && meta.ref) || caseData.caseRef || "—";
     document.getElementById("case-title").textContent = caseData.caseName;
     combineOpen = false;
     showScreen("screen-case");
-    setActiveTab("evidence");
+    setActiveTab("pinned");
+  }
+
+  function caseMatchesFilter(c, filter) {
+    if (filter === "closed") return c.status === "closed";
+    if (filter === "active") return c.status === "active";
+    if (filter === "open") return c.status === "active" || c.status === "open";
+    return false;
+  }
+
+  function countCasesForFilter(filter) {
+    return casesList.filter(function (c) {
+      return caseMatchesFilter(c, filter);
+    }).length;
+  }
+
+  function statLabel(key, n) {
+    if (n === 1) {
+      if (key === "Locations") return "Location";
+      if (key === "People") return "Person";
+    }
+    return key;
+  }
+
+  function renderCaseStatsHtml(stats) {
+    if (!stats) return "";
+    return (
+      '<div class="case-card-stats">' +
+      ["Locations", "Evidence", "People"]
+        .filter(function (key) {
+          return stats[key] != null;
+        })
+        .map(function (key) {
+          const n = stats[key];
+          return (
+            '<div class="case-stat">' +
+            '<span class="case-stat-label">' +
+            UI.escapeHtml(statLabel(key, n)) +
+            "</span>" +
+            '<span class="case-stat-value">' +
+            n +
+            "</span>" +
+            "</div>"
+          );
+        })
+        .join("") +
+      "</div>"
+    );
   }
 
   function renderCasesList() {
     const container = document.getElementById("cases-list");
     const filtered = casesList.filter(function (c) {
-      return c.status === caseFilter;
+      return caseMatchesFilter(c, caseFilter);
     });
     if (!filtered.length) {
       container.innerHTML = '<p class="empty-tab">No cases in this category.</p>';
@@ -288,8 +340,8 @@
           '"' +
           (c.playable ? "" : " disabled") +
           ">" +
-          '<div class="case-card-folder"><span class="case-card-num">' +
-          c.number +
+          '<div class="case-card-folder"><span class="case-card-ref">' +
+          UI.escapeHtml(c.ref) +
           "</span></div>" +
           '<div class="case-card-body">' +
           '<div class="case-card-main">' +
@@ -304,13 +356,8 @@
           '<p class="case-card-category">' +
           UI.escapeHtml(c.category) +
           "</p>" +
-          '<p class="case-card-dates">Opened: ' +
-          c.opened +
-          "<br>Updated: " +
-          c.updated +
-          "</p>" +
+          renderCaseStatsHtml(c.stats) +
           "</div>" +
-          '<span class="case-card-chevron" aria-hidden="true">›</span>' +
           "</div></button>"
         );
       })
@@ -326,13 +373,15 @@
     });
   }
 
+  function formatCaseCount(n) {
+    return n === 1 ? "1 case" : n + " cases";
+  }
+
   function updateCaseTabCounts() {
     ["active", "open", "closed"].forEach(function (status) {
-      const n = casesList.filter(function (c) {
-        return c.status === status;
-      }).length;
+      const n = countCasesForFilter(status);
       const el = document.getElementById("count-" + status);
-      if (el) el.textContent = String(n);
+      if (el) el.textContent = formatCaseCount(n);
     });
   }
 
@@ -346,10 +395,19 @@
     return window.CASE1_DATA;
   }
 
+  function renderLandingVersion() {
+    const el = document.getElementById("landing-version");
+    const version = window.APP_DATA && window.APP_DATA.version;
+    if (el && version) {
+      el.textContent = "v" + version;
+    }
+  }
+
   function loadAllData() {
-    if (!window.CASE1_DATA || !window.RESOURCES_DATA || !window.CASES_LIST_DATA) {
+    if (!window.APP_DATA || !window.CASE1_DATA || !window.RESOURCES_DATA || !window.CASES_LIST_DATA) {
       throw new Error("Data scripts missing");
     }
+    renderLandingVersion();
     resources = window.RESOURCES_DATA.resources || [];
     casesList = window.CASES_LIST_DATA.cases || [];
     window.__caseData = window.CASE1_DATA;

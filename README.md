@@ -11,8 +11,11 @@ Keep the folder structure intact:
 ```
 Prototype/
   index.html
+  images/
+    pin.png
   css/app.css
   js/
+    app-data.js        ← app metadata (embedded)
     case1-data.js      ← game data (embedded)
     resources-data.js
     cases-data.js
@@ -33,6 +36,7 @@ import json, pathlib
 base = pathlib.Path('data')
 out = pathlib.Path('js')
 for src, var, dst in [
+    ('app.json', 'APP_DATA', 'app-data.js'),
     ('case1_data.json', 'CASE1_DATA', 'case1-data.js'),
     ('resources.json', 'RESOURCES_DATA', 'resources-data.js'),
     ('cases.json', 'CASES_LIST_DATA', 'cases-data.js'),
@@ -48,4 +52,4 @@ You can still serve the folder if you prefer (`python -m http.server 3456`). Beh
 
 ## Play Case 1
 
-**START INVESTIGATING** → **THE MOPED THEFT** (case 01).
+**start investigating** → **Moped theft** (23-1748).
